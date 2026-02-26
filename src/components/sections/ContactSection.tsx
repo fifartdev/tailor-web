@@ -11,7 +11,9 @@ export default function ContactSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [services, setServices] = useState<string[]>([]);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -31,7 +33,7 @@ export default function ContactSection() {
             trigger: ".contact-content",
             start: "top 80%",
           },
-        }
+        },
       );
 
       // Form fields stagger in
@@ -48,7 +50,7 @@ export default function ContactSection() {
             trigger: ".contact-form",
             start: "top 80%",
           },
-        }
+        },
       );
 
       // Background glow
@@ -63,7 +65,7 @@ export default function ContactSection() {
             trigger: sectionRef.current,
             start: "top 70%",
           },
-        }
+        },
       );
     }, sectionRef);
 
@@ -72,7 +74,7 @@ export default function ContactSection() {
 
   const toggleService = (opt: string) => {
     setServices((prev) =>
-      prev.includes(opt) ? prev.filter((s) => s !== opt) : [...prev, opt]
+      prev.includes(opt) ? prev.filter((s) => s !== opt) : [...prev, opt],
     );
   };
 
@@ -144,8 +146,7 @@ export default function ContactSection() {
             className="text-[clamp(2.5rem,6vw,6rem)] text-[#F5F0E8] leading-none"
             style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
-            Ready for a{" "}
-            <span className="italic text-[#C9A96E]">Fitting?</span>
+            Ready for a <span className="italic text-[#C9A96E]">Fitting?</span>
           </h2>
           <div className="h-px w-16 bg-gradient-to-r from-transparent via-[#C9A96E] to-transparent mx-auto" />
           <p
@@ -171,7 +172,10 @@ export default function ContactSection() {
                 onChange={(e) => setName(e.target.value)}
                 required
                 className="w-full bg-[#1a7a7e] border border-[#C9A96E]/15 text-[#F5F0E8] px-5 py-4 font-sans text-sm placeholder:text-[#EDE8DE]/25 focus:outline-none focus:border-[#C9A96E]/50 transition-colors duration-300"
-                style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1rem" }}
+                style={{
+                  fontFamily: "var(--font-cormorant), Georgia, serif",
+                  fontSize: "1rem",
+                }}
               />
             </div>
             <div className="contact-field space-y-2" style={{ opacity: 0 }}>
@@ -185,7 +189,10 @@ export default function ContactSection() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full bg-[#1a7a7e] border border-[#C9A96E]/15 text-[#F5F0E8] px-5 py-4 placeholder:text-[#EDE8DE]/25 focus:outline-none focus:border-[#C9A96E]/50 transition-colors duration-300"
-                style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1rem" }}
+                style={{
+                  fontFamily: "var(--font-cormorant), Georgia, serif",
+                  fontSize: "1rem",
+                }}
               />
             </div>
           </div>
@@ -195,23 +202,25 @@ export default function ContactSection() {
               What Can We Tailor For You?
             </label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {["Web Design", "Development", "Mobile App", "Paid Ads"].map((opt) => (
-                <label
-                  key={opt}
-                  className="flex items-center gap-2 cursor-pointer group"
-                >
-                  <input
-                    type="checkbox"
-                    className="hidden peer"
-                    checked={services.includes(opt)}
-                    onChange={() => toggleService(opt)}
-                  />
-                  <div className="w-4 h-4 border border-[#C9A96E]/30 peer-checked:bg-[#C9A96E] peer-checked:border-[#C9A96E] transition-all duration-200 flex-shrink-0 group-hover:border-[#C9A96E]/60" />
-                  <span className="font-sans text-xs tracking-wide text-[#EDE8DE]/60 group-hover:text-[#EDE8DE] transition-colors">
-                    {opt}
-                  </span>
-                </label>
-              ))}
+              {["Web Design", "Development", "Mobile App", "Paid Ads"].map(
+                (opt) => (
+                  <label
+                    key={opt}
+                    className="flex items-center gap-2 cursor-pointer group"
+                  >
+                    <input
+                      type="checkbox"
+                      className="hidden peer"
+                      checked={services.includes(opt)}
+                      onChange={() => toggleService(opt)}
+                    />
+                    <div className="w-4 h-4 border border-[#C9A96E]/30 peer-checked:bg-[#C9A96E] peer-checked:border-[#C9A96E] transition-all duration-200 flex-shrink-0 group-hover:border-[#C9A96E]/60" />
+                    <span className="font-sans text-xs tracking-wide text-[#EDE8DE]/60 group-hover:text-[#EDE8DE] transition-colors">
+                      {opt}
+                    </span>
+                  </label>
+                ),
+              )}
             </div>
           </div>
 
@@ -225,21 +234,39 @@ export default function ContactSection() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               className="w-full bg-[#1a7a7e] border border-[#C9A96E]/15 text-[#F5F0E8] px-5 py-4 placeholder:text-[#EDE8DE]/25 focus:outline-none focus:border-[#C9A96E]/50 transition-colors duration-300 resize-none"
-              style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1rem" }}
+              style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "1rem",
+              }}
             />
           </div>
 
-          <div className="contact-field flex flex-col sm:flex-row gap-6 items-start sm:items-center pt-4" style={{ opacity: 0 }}>
+          <div
+            className="contact-field flex flex-col sm:flex-row gap-6 items-start sm:items-center pt-4"
+            style={{ opacity: 0 }}
+          >
             {status === "success" ? (
               <div className="flex items-center gap-4 px-8 py-5 border border-[#C9A96E]/30 bg-[#C9A96E]/5">
-                <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 flex-shrink-0" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  className="w-5 h-5 flex-shrink-0"
+                  stroke="#C9A96E"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <polyline points="4 10 8 14 16 6" />
                 </svg>
                 <p
                   className="text-[#C9A96E] text-sm tracking-wide"
-                  style={{ fontFamily: "var(--font-cormorant), Georgia, serif", fontSize: "1.05rem" }}
+                  style={{
+                    fontFamily: "var(--font-cormorant), Georgia, serif",
+                    fontSize: "1.05rem",
+                  }}
                 >
-                  Your message has been received. We&apos;ll be in touch shortly.
+                  Your message has been received. We&apos;ll be in touch
+                  shortly.
                 </p>
               </div>
             ) : (
@@ -250,13 +277,18 @@ export default function ContactSection() {
                   className="inline-flex items-center gap-3 px-12 py-5 font-sans text-xs tracking-[0.25em] uppercase bg-[#C9A96E] text-[#0A0908] hover:bg-[#DFC08A] transition-all duration-400 hover:shadow-[0_0_40px_rgba(201,169,110,0.25)] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {status === "loading" ? "Sending…" : "Book a Consultation"}
-                  {status !== "loading" && <span className="text-lg leading-none">→</span>}
+                  {status !== "loading" && (
+                    <span className="text-lg leading-none">→</span>
+                  )}
                 </button>
                 {status === "error" && (
                   <p className="font-sans text-xs text-[#EDE8DE]/60">
                     Something went wrong. Please email{" "}
-                    <a href="mailto:hello@thetailor.gr" className="text-[#C9A96E] hover:text-[#DFC08A] transition-colors">
-                      hello@thetailor.gr
+                    <a
+                      href="mailto:create@thetailor.gr"
+                      className="text-[#C9A96E] hover:text-[#DFC08A] transition-colors"
+                    >
+                      create@thetailor.gr
                     </a>{" "}
                     directly.
                   </p>
@@ -269,10 +301,10 @@ export default function ContactSection() {
                   Or reach us directly
                 </p>
                 <a
-                  href="mailto:hello@thetailor.gr"
+                  href="mailto:create@thetailor.gr"
                   className="font-sans text-xs text-[#C9A96E] hover:text-[#DFC08A] transition-colors"
                 >
-                  hello@thetailor.gr
+                  create@thetailor.gr
                 </a>
               </div>
             )}
