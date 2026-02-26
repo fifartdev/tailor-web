@@ -156,7 +156,7 @@ export default function ProcessSection() {
           {/* Vertical line */}
           <div
             ref={lineRef}
-            className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 origin-top"
+            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 origin-top"
             style={{
               background: "linear-gradient(to bottom, transparent, #C9A96E 10%, #C9A96E 90%, transparent)",
               transform: "scaleY(0)",
