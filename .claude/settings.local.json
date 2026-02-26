@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --version)",
+      "Bash(npm --version)",
+      "Bash(npx --version)",
+      "Bash(npm info next version)",
+      "Bash(npm info gsap version)",
+      "Bash(npm info tailwindcss version)",
+      "Bash(npm info typescript version)",
+      "Bash(npm info @types/node version)",
+      "Bash(npm info @types/react version)",
+      "Bash(npm info next@latest peerDependencies)",
+      "Bash(npm info react version)",
+      "Bash(npm info react-dom version)",
+      "Bash(npm info gsap dist-tags)"
+    ]
+  }
+}

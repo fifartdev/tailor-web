@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ── Custom Theme Tokens (Tailwind v4) ──────────────── */
+@theme {
+  /* Atelier palette — Mediterranean Teal */
+  --color-atelier-black: #0d4d51;
+  --color-atelier-charcoal: #21989d;
+  --color-atelier-dark: #1a7a7e;
+  --color-atelier-mid: #148a8f;
+  --color-atelier-warm: #2aabaf;
+  --color-atelier-cream: #F5F0E8;
+  --color-atelier-ivory: #EDE8DE;
+  --color-atelier-gold: #C9A96E;
+  --color-atelier-gold-light: #DFC08A;
+  --color-atelier-gold-dark: #A8884F;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Typography */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Transitions */
+  --ease-luxury: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+  --ease-reveal: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Shadows */
+  --shadow-gold-glow: 0 0 40px rgba(201, 169, 110, 0.12);
+  --shadow-card-dark: 0 4px 32px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover: 0 8px 48px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(201, 169, 110, 0.2);
+
+  /* Keyframes */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
+
+  @keyframes shimmer {
+    from { background-position: -200% center; }
+    to   { background-position:  200% center; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+  }
+
+  --animate-fade-in: fade-in 1.2s ease-out forwards;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-pulse-gold: pulse-gold 2s ease-in-out infinite;
+}
+
+/* ── CSS Custom Properties ──────────────────────────── */
+:root {
+  --gold: #C9A96E;
+  --cream: #F5F0E8;
+  --charcoal: #0d4d51;
+}
+
+/* ── Base Reset ─────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  background-color: #0d4d51;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0d4d51;
+  color: #F5F0E8;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: #0d4d51; }
+::-webkit-scrollbar-thumb  { background: #C9A96E; border-radius: 2px; }
+
+/* Selection */
+::selection {
+  background-color: rgba(201, 169, 110, 0.25);
+  color: #F5F0E8;
+}
+
+/* ── Utility classes ─────────────────────────────────── */
+
+/* GSAP: hide elements before animation plays */
+.gsap-initial {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Keep overflow hidden for char animations */
+.split-parent {
+  overflow: hidden;
+  display: block;
+}
+
+/* Gold shimmer gradient text */
+.text-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #C9A96E 0%,
+    #DFC08A 40%,
+    #F5E6C8 50%,
+    #DFC08A 60%,
+    #C9A96E 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Thread SVG path */
+.thread-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+}
+
+/* Horizontal scroll track for services */
+.services-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Gold decorative rule */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A96E, transparent);
+}
+
+/* Card with inner glow on hover */
+.service-card-hover:hover {
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(201, 169, 110, 0.25);
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  background-repeat: repeat;
+}
+
+/* Pinstripe background pattern */
+.pinstripe {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 40px,
+    rgba(201, 169, 110, 0.03) 40px,
+    rgba(201, 169, 110, 0.03) 41px
+  );
 }
