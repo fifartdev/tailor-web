@@ -42,12 +42,13 @@ export default function HeroSection() {
         bgGlowRef.current,
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 2.5, ease: "power2.out" },
-        0
+        0,
       );
 
       // Each word's characters cascade in from below
       const theChars = sectionRef.current!.querySelectorAll(".word-the .char");
-      const tailorChars = sectionRef.current!.querySelectorAll(".word-tailor .char");
+      const tailorChars =
+        sectionRef.current!.querySelectorAll(".word-tailor .char");
 
       tl.fromTo(
         theChars,
@@ -59,7 +60,7 @@ export default function HeroSection() {
           stagger: 0.06,
           ease: "power4.out",
         },
-        0.2
+        0.2,
       );
 
       tl.fromTo(
@@ -72,7 +73,7 @@ export default function HeroSection() {
           stagger: 0.05,
           ease: "power4.out",
         },
-        0.45
+        0.45,
       );
 
       // Gold rule line expands
@@ -80,7 +81,7 @@ export default function HeroSection() {
         lineRef.current,
         { scaleX: 0 },
         { scaleX: 1, duration: 1.4, ease: "power3.inOut" },
-        1.0
+        1.0,
       );
 
       // Subtitle fades up
@@ -88,7 +89,7 @@ export default function HeroSection() {
         subtitleRef.current,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" },
-        1.1
+        1.1,
       );
 
       // Tagline fades up
@@ -96,7 +97,7 @@ export default function HeroSection() {
         taglineRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
-        1.4
+        1.4,
       );
 
       // Scroll indicator
@@ -104,7 +105,7 @@ export default function HeroSection() {
         scrollRef.current,
         { opacity: 0, y: -10 },
         { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-        1.9
+        1.9,
       );
 
       // ── Parallax on scroll ───────────────────────────
@@ -159,7 +160,7 @@ export default function HeroSection() {
           className="font-sans text-[0.65rem] tracking-[0.5em] uppercase text-[#C9A96E] mb-12 opacity-80"
           style={{ letterSpacing: "0.5em" }}
         >
-          Athens · Greece · Est. 2024
+          Athens · Greece · Est. 2021
         </p>
 
         {/* Title */}
