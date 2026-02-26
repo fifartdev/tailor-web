@@ -173,7 +173,7 @@ export default function HeroSection() {
           </div>
 
           {/* "TAILOR" */}
-          <div className="block text-[clamp(5rem,18vw,16rem)] text-[#F5F0E8] tracking-[0.05em] font-black leading-none">
+          <div className="block text-[clamp(2rem,18vw,16rem)] text-[#F5F0E8] tracking-[0.05em] font-black leading-none whitespace-nowrap">
             <SplitChars text="TAILOR" className="word-tailor" />
           </div>
         </h1>
